@@ -3,8 +3,8 @@
    =========================================================
    ⚙️ ADMIN LOGIN:
    --------------------------------------------------------- */
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'admin';
+const ADMIN_USERNAME = 'cyberlobo515@gmail.com';
+const ADMIN_PASSWORD = 'Samsung18_';
 
 /* 🤖 TELEGRAM BOT — TOKENINGIZNI SHU YERGA QO'YING */
 const TELEGRAM_CONFIG = {
