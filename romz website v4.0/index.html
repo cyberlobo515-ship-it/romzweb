@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ROMZ WEBSITE </title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23E3CB94'/%3E%3Cstop offset='55%25' stop-color='%23C5A059'/%3E%3Cstop offset='100%25' stop-color='%239C7C3D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230D0D0D'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='42' fill='url(%23g)'%3ER%3C/text%3E%3C/svg%3E"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- 🎨 CUSTOM SVG SPRITE -->
+<svg width="0" height="0" style="position:absolute; overflow:hidden;" aria-hidden="true">
+    <defs>
+        <symbol id="icon-romz-r" viewBox="0 0 40 40">
+            <defs>
+                <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#F4E4C1"/>
+                    <stop offset="50%" stop-color="#D4AF37"/>
+                    <stop offset="100%" stop-color="#9C7C3D"/>
+                </linearGradient>
+            </defs>
+            <path d="M10 8 L10 32 L14 32 L14 22 L20 22 L26 32 L31 32 L24 20 C27.5 19 29 16 29 13 C29 9 26 8 22 8 Z M14 12 L21 12 C23 12 24.5 12.8 24.5 14.5 C24.5 16.2 23 17.5 21 17.5 L14 17.5 Z" fill="url(#goldGrad)"/>
+        </symbol>
+        <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></symbol>
+        <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M7 7V6a5 5 0 0110 0v1h3a1 1 0 011 1v13a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1h3zm2 0h6V6a3 3 0 00-6 0v1z" fill="currentColor"/></symbol>
+        <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 2L4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3zm0 2.18l6 2.25v5.57c0 4-2.75 7.29-6 8.87-3.25-1.58-6-4.87-6-8.87V6.43l6-2.25zM11 9h2v5h-2V9zm0 6h2v2h-2v-2z" fill="currentColor"/></symbol>
+        <symbol id="icon-telegram" viewBox="0 0 24 24"><path d="M22 3L2 10.5l5.5 2L20 5l-10 9v5.5l3-3 4 3 5-16.5z" fill="currentColor"/></symbol>
+        <symbol id="icon-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/></symbol>
+        <symbol id="icon-search" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z" fill="currentColor"/></symbol>
+        <symbol id="icon-trash" viewBox="0 0 24 24"><path d="M6 19a2 2 0 002 2h8a2 2 0 002-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" fill="currentColor"/></symbol>
+        <symbol id="icon-pen" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></symbol>
+        <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/></symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></symbol>
+    </defs>
+</svg>
+
+<div class="top-marquee">
+    <span><i class="fas fa-sparkles"></i> <span data-i18n="top1">Yangi Kuz-Qish 2025 Kolleksiyasi</span></span>
+    <span style="opacity:0.3;">|</span>
+    <span><i class="fas fa-truck-fast"></i> <span data-i18n="top2">O'zbekiston bo'ylab 2 kunda VIP kuryer</span></span>
+    <span style="opacity:0.3;">|</span>
+    <span style="color:var(--gold);"><i class="fab fa-telegram"></i> <span data-i18n="top3">Telegram Bot integratsiyasi</span></span>
+</div>
+
+<header class="header">
+    <div class="header-inner">
+        <a class="brand" href="#">
+            <span class="brand-mark"><svg width="22" height="22"><use href="#icon-romz-r"/></svg></span>
+            <div><div class="brand-name">ROMZ</div><div class="brand-sub">KIYIM DO'KONI</div></div>
+        </a>
+        <nav class="nav">
+            <a class="nav-link active" data-cat="all" href="#catalog" data-i18n="nav_all">Barchasi</a>
+            <a class="nav-link" data-cat="outerwear" href="#catalog" data-i18n="nav_outerwear">Ustki kiyim</a>
+            <a class="nav-link" data-cat="tailoring" href="#catalog" data-i18n="nav_tailoring">Kostyumlar</a>
+            <a class="nav-link" data-cat="knitwear" href="#catalog" data-i18n="nav_knitwear">Trikotaj</a>
+            <a class="nav-link" data-cat="footwear" href="#catalog" data-i18n="nav_footwear">Poyabzal</a>
+            <a class="nav-link" data-cat="accessories" href="#catalog" data-i18n="nav_accessories">Aksessuarlar</a>
+        </nav>
+        <div class="header-actions">
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="uz" onclick="applyLanguage('uz')">🇺🇿</button>
+                <button class="lang-btn" data-lang="en" onclick="applyLanguage('en')">🇬🇧</button>
+                <button class="lang-btn" data-lang="ru" onclick="applyLanguage('ru')">🇷🇺</button>
+            </div>
+            <div class="search-wrap">
+                <svg width="12" height="12" style="color:var(--gold);"><use href="#icon-search"/></svg>
+                <input id="searchInput" data-i18n-placeholder="search_ph" placeholder="Qidirish..." type="text"/>
+            </div>
+            <button class="btn-admin-pill" onclick="openAdminLogin()">
+                <svg width="14" height="14"><use href="#icon-shield"/></svg> <span data-i18n="admin_btn">Admin</span>
+            </button>
+            <button class="wishlist-header-btn" onclick="openWishlist()" aria-label="Wishlist">
+                <svg width="18" height="18"><use href="#icon-heart"/></svg>
+                <span class="cart-badge" id="wishlistBadgeCount">0</span>
+            </button>
+            <button class="cart-btn" onclick="openCart()" aria-label="Cart">
+                <svg width="18" height="18"><use href="#icon-bag"/></svg>
+                <span class="cart-badge" id="cartBadgeCount">0</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div id="storeViewWrapper">
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="hero-tag"><span style="width:6px; height:6px; border-radius:50%; background:var(--gold);"></span> <span data-i18n="hero_tag">Kuz-Qish UCHUN </span></div>
+                <h1 class="hero-title" data-i18n-html="hero_title">Kuz &amp; Qish: <em>Haqiqiy aristokratik</em> did</h1>
+                <p class="hero-sub" data-i18n="hero_sub">Yuqori darajadagi kashmir, jun va ipak matolardan tayyorlangan saralangan siluetlar.</p>
+                <div class="hero-cta">
+                    <a class="btn btn-primary" href="#catalog"><span data-i18n="hero_cta">Kolleksiyani kashf etish</span> <i class="fas fa-arrow-right"></i></a>
+                    <button class="btn btn-ghost" onclick="filterCategory('outerwear')"><i class="fas fa-gem" style="color:var(--gold);"></i> <span data-i18n="hero_cta2">Yangi paltolar</span></button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item"><span class="stat-num" id="statModelCount">128+</span><span class="stat-label" data-i18n="stat_models">Model turlari</span></div>
+                    <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label" data-i18n="stat_natural">Tabiiy matolar</span></div>
+                    <div class="stat-item"><span class="stat-num">2 <span data-i18n="stat_days">kun</span></span><span class="stat-label" data-i18n="stat_vip">VIP yetkazish</span></div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-featured-card" onclick="openHeroShowcaseDetail()">
+                    <img alt="Hero" id="heroShowcaseImg" src=""/>
+                    <div class="hero-card-overlay">
+                        <span id="heroShowcaseBadge" style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:4px;" data-i18n="hero_badge">Haftaning sarasi</span>
+                        <h3 id="heroShowcaseTitle" style="font-family:'Playfair Display',serif; font-size:22px; color:var(--ivory); font-weight:500;">—</h3>
+                        <span id="heroShowcasePrice" style="font-family:'Playfair Display',serif; font-size:18px; font-weight:600; color:var(--gold-light);">—</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="editorial-perks">
+        <div class="perk-card"><div class="perk-icon"><i class="fas fa-medal"></i></div><div class="perk-info"><h4 data-i18n="perk1_title">Original Sifat</h4><p data-i18n="perk1_desc">Har bir buyum sifat tekshiruvidan o'tgan.</p></div></div>
+        <div class="perk-card"><div class="perk-icon"><i class="fab fa-telegram-plane"></i></div><div class="perk-info"><h4 data-i18n="perk2_title">Telegram Bot</h4><p data-i18n="perk2_desc">Buyurtma tafsilotlari kanalga yuboriladi.</p></div></div>
+        <div class="perk-card"><div class="perk-icon"><i class="fas fa-box-open"></i></div><div class="perk-info"><h4 data-i18n="perk3_title">Premium Qadoqlash</h4><p data-i18n="perk3_desc">Brend qutilari va himoya g'iloflari bilan.</p></div></div>
+    </section>
+
+    <main class="catalog" id="catalog">
+        <div class="catalog-head">
+            <div>
+                <span class="section-eyebrow" data-i18n="catalog_eyebrow">Tanlangan kolleksiya</span>
+                <h2 class="section-title" data-i18n="catalog_title">Saralangan Katalog</h2>
+            </div>
+            <div class="sort-wrap">
+                <span data-i18n="sort_label">Saralash:</span>
+                <select id="sortSelect" onchange="handleSort(this.value)">
+                    <option value="featured" data-i18n="sort_featured">Tavsiya</option>
+                    <option value="price-asc" data-i18n="sort_pa">Narx ↑</option>
+                    <option value="price-desc" data-i18n="sort_pd">Narx ↓</option>
+                    <option value="stock-desc" data-i18n="sort_stock">Qoldiq</option>
+                </select>
+            </div>
+        </div>
+        <div class="chips" id="categoryChips">
+            <button class="chip active" onclick="filterCategory('all', this)" data-i18n="chip_all">Barchasi</button>
+            <button class="chip" onclick="filterCategory('outerwear', this)" data-i18n="chip_outerwear">Ustki kiyim</button>
+            <button class="chip" onclick="filterCategory('tailoring', this)" data-i18n="chip_tailoring">Kostyumlar</button>
+            <button class="chip" onclick="filterCategory('knitwear', this)" data-i18n="chip_knitwear">Trikotaj</button>
+            <button class="chip" onclick="filterCategory('footwear', this)" data-i18n="chip_footwear">Poyabzal</button>
+            <button class="chip" onclick="filterCategory('accessories', this)" data-i18n="chip_accessories">Aksessuarlar</button>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <div class="brand"><span class="brand-mark"><svg width="22" height="22"><use href="#icon-romz-r"/></svg></span><div><div class="brand-name">ROMZ</div><div class="brand-sub">Luxury Apparel & Atelier</div></div></div>
+                <p style="font-size:12.5px; color:var(--text-sub); max-width:300px; margin-top:14px;" data-i18n="footer_about">ROMZ — nafosat va klassik dizayn uyg'unligi.</p>
+            </div>
+            <div><h5 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--ivory); margin-bottom:12px;" data-i18n="footer_collections">Kolleksiyalar</h5>
+                <div style="display:flex; flex-direction:column; gap:8px; font-size:12.5px; color:var(--text-sub);">
+                    <a href="#catalog" onclick="filterCategory('outerwear')" data-i18n="chip_outerwear">Ustki kiyim</a>
+                    <a href="#catalog" onclick="filterCategory('tailoring')" data-i18n="chip_tailoring">Kostyumlar</a>
+                    <a href="#catalog" onclick="filterCategory('knitwear')" data-i18n="chip_knitwear">Trikotaj</a>
+                    <a href="#catalog" onclick="filterCategory('footwear')" data-i18n="chip_footwear">Poyabzal</a>
+                </div>
+            </div>
+            <div><h5 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--ivory); margin-bottom:12px;" data-i18n="footer_customers">Mijozlarga</h5>
+                <div style="display:flex; flex-direction:column; gap:8px; font-size:12.5px; color:var(--text-sub);">
+                    <a href="#" data-i18n="footer_size">O'lcham jadvali</a>
+                    <a href="#" data-i18n="footer_vip">VIP Yetkazish</a>
+                    <a href="#" data-i18n="footer_tg">Telegram Bot</a>
+                </div>
+            </div>
+            <div><h5 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--ivory); margin-bottom:12px;" data-i18n="footer_contact">Bog'lanish</h5>
+                <p style="font-size:12px; color:var(--text-sub); margin-bottom:4px;" data-i18n="footer_address">Toshkent sh., Amir Temur, 42</p>
+                <p style="font-size:15px; color:var(--gold-light); font-weight:600; margin-bottom:10px;">+998 (71) 200-88-99</p>
+                <div style="display:flex; gap:10px;"><a href="#" style="width:32px; height:32px; border-radius:50%; border:1px solid var(--line); display:grid; place-items:center; color:var(--gold);"><i class="fab fa-telegram"></i></a><a href="#" style="width:32px; height:32px; border-radius:50%; border:1px solid var(--line); display:grid; place-items:center; color:var(--gold);"><i class="fab fa-instagram"></i></a></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span data-i18n="footer_copyright">© 2025 ROMZ. Barcha huquqlar himoyalangan.</span>
+            <span data-i18n="footer_location">Toshkent · Bot v2.4 Active</span>
+        </div>
+    </footer>
+</div>
+
+<nav class="bottom-nav">
+    <button class="bottom-nav-btn active" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-compass" style="font-size:17px;"></i><span data-i18n="nav_store">Do'kon</span></button>
+    <button class="bottom-nav-btn" onclick="openWishlist()"><svg width="17" height="17"><use href="#icon-heart"/></svg><span data-i18n="nav_wishlist">Wishlist</span><span class="cart-badge" id="mobileWishlistBadge" style="top:-2px; right:6px;">0</span></button>
+    <button class="bottom-nav-btn" onclick="openCart()"><svg width="17" height="17"><use href="#icon-bag"/></svg><span data-i18n="nav_cart">Savat</span><span class="cart-badge" id="mobileCartBadge" style="top:-2px; right:8px;">0</span></button>
+    <button class="bottom-nav-btn" onclick="openAdminLogin()"><svg width="17" height="17"><use href="#icon-shield"/></svg><span>Admin</span></button>
+</nav>
+
+<!-- ==================== ADMIN ==================== -->
+<div id="adminFullWebsite">
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="admin-sidebar-head">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <span class="brand-mark" style="width:32px; height:32px;"><svg width="18" height="18"><use href="#icon-romz-r"/></svg></span>
+                <div><div style="font-family:'Cinzel',serif; font-size:14px; font-weight:700; color:var(--ivory); letter-spacing:1px;">ROMZ ADMIN</div><div style="font-size:8px; color:var(--gold); text-transform:uppercase;">Boshqaruv</div></div>
+            </div>
+            <button class="modal-close" onclick="closeAdminSidebarMobile()" style="display:none;" id="mobileAdminCloseBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="admin-nav">
+            <button class="admin-nav-item active" onclick="switchAdminTab('stats')"><i class="fas fa-chart-pie"></i> <span>Statistika</span></button>
+            <button class="admin-nav-item" onclick="switchAdminTab('orders')"><i class="fas fa-clipboard-list"></i> <span>Buyurtmalar</span></button>
+            <button class="admin-nav-item" onclick="switchAdminTab('products')"><i class="fas fa-shirt"></i> <span>Mahsulotlar</span></button>
+            <button class="admin-nav-item" onclick="switchAdminTab('hero')"><svg width="14" height="14"><use href="#icon-star"/></svg> <span>Hero</span></button>
+            <button class="admin-nav-item" onclick="switchAdminTab('bot')"><svg width="14" height="14"><use href="#icon-telegram"/></svg> <span>Telegram</span></button>
+        </nav>
+        <div class="admin-sidebar-bottom">
+            <div style="font-size:10.5px; color:var(--text-dim); text-align:center;">Admin: <span style="color:var(--gold-light);">@admin_romz</span></div>
+            <button class="exit-btn" onclick="exitAdminWebsite()"><i class="fas fa-arrow-left"></i> Do'konga qaytish</button>
+        </div>
+    </aside>
+    <div class="admin-main">
+        <header class="admin-topbar">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <button class="cart-btn" onclick="openAdminSidebarMobile()" id="adminBurgerBtn" style="display:none; width:34px; height:34px;"><i class="fas fa-bars"></i></button>
+                <h3 id="adminTabTitle" style="font-family:'Playfair Display',serif; font-size:18px; color:var(--ivory);">Statistika</h3>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <span style="font-size:11px; color:var(--emerald); background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); padding:3px 8px; border-radius:99px;"><i class="fas fa-circle" style="font-size:8px;"></i> Bot Faol</span>
+                <button class="btn btn-ghost btn-sm" onclick="exitAdminWebsite()"><i class="fas fa-shop"></i> Do'kon</button>
+            </div>
+        </header>
+        <div class="admin-content-scroll">
+            <!-- STATS -->
+            <section id="tab-stats">
+                <div class="metric-cards">
+                    <div class="mcard"><div><div class="mlabel">Jami Tushum</div><div class="mval" id="adminTotalRevenue">0</div><div style="font-size:10.5px; color:var(--emerald);"><i class="fas fa-arrow-trend-up"></i> +16.2%</div></div><div class="perk-icon"><i class="fas fa-wallet"></i></div></div>
+                    <div class="mcard"><div><div class="mlabel">Buyurtmalar</div><div class="mval" id="adminTotalOrdersCount">0</div></div><div class="perk-icon"><i class="fas fa-bag-shopping"></i></div></div>
+                    <div class="mcard"><div><div class="mlabel">Mijozlar</div><div class="mval" id="adminCustomerCount">28</div></div><div class="perk-icon"><i class="fas fa-users"></i></div></div>
+                    <div class="mcard"><div><div class="mlabel">Kam qoldiq</div><div class="mval" id="adminLowStockCount" style="color:var(--rose);">0</div></div><div class="perk-icon" style="background:rgba(244,63,94,0.1); color:var(--rose);"><i class="fas fa-boxes-stacked"></i></div></div>
+                </div>
+                <div class="chart-grid">
+                    <div class="admin-card-box" style="margin-bottom:0;">
+                        <div class="admin-card-head">
+                            <h4 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--ivory);"><svg width="14" height="14" style="vertical-align:middle; color:var(--gold);"><use href="#icon-star"/></svg> Savdo dinamikasi (7 kun)</h4>
+                            <span id="chartRevenueTotal" style="font-size:12px; color:var(--gold-light); font-weight:600;">0</span>
+                        </div>
+                        <div style="padding:16px; height:260px; position:relative;"><canvas id="salesChart"></canvas></div>
+                    </div>
+                    <div class="admin-card-box" style="margin-bottom:0;">
+                        <div class="admin-card-head"><h4 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--ivory);">Kategoriya bo'yicha</h4></div>
+                        <div style="padding:16px; height:260px; position:relative;"><canvas id="categoryChart"></canvas></div>
+                    </div>
+                </div>
+                <div class="admin-card-box">
+                    <div class="admin-card-head"><h4 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--ivory);">So'nggi Buyurtmalar</h4></div>
+                    <div style="overflow-x:auto;"><table class="admin-table"><thead><tr><th>ID</th><th>Mijoz</th><th>Telefon</th><th>Summa</th><th>Status</th></tr></thead><tbody id="adminRecentOrdersTable"></tbody></table></div>
+                </div>
+            </section>
+            <!-- ORDERS -->
+            <section id="tab-orders" style="display:none;">
+                <div class="admin-card-box"><div class="admin-card-head"><h4 style="font-family:'Playfair Display',serif; font-size:16px; color:var(--ivory);">Barcha Buyurtmalar</h4></div>
+                    <div style="overflow-x:auto;"><table class="admin-table"><thead><tr><th>ID</th><th>Vaqt</th><th>Mijoz</th><th>Telefon</th><th>Mahsulotlar</th><th>Jami</th><th>Status</th><th>×</th></tr></thead><tbody id="adminAllOrdersTable"></tbody></table></div>
+                </div>
+            </section>
+            <!-- PRODUCTS -->
+            <section id="tab-products" style="display:none;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+                    <div><h4 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--ivory);">Mahsulotlar</h4><span style="font-size:11.5px; color:var(--text-sub);">Kod avtomatik · ⭐ hero · ✏️ tahrir · 🗑️ o'chirish</span></div>
+                    <button class="btn btn-primary btn-sm" onclick="openProductEditForm()"><i class="fas fa-plus"></i> Yangi kiyim</button>
+                </div>
+                <div id="productFormContainer" style="display:none; background:var(--surface); border:1px solid var(--gold-line); border-radius:var(--r-md); padding:20px; margin-bottom:20px;">
+                    <h5 id="formProductTitle" style="font-family:'Playfair Display',serif; font-size:17px; color:var(--ivory); margin-bottom:12px;">Yangi mahsulot</h5>
+                    <form id="adminProductForm" onsubmit="saveAdminProduct(event)">
+                        <input id="formProdId" type="hidden" value=""/>
+                        <div style="display:grid; grid-template-columns: 1fr 2fr 1fr 1fr; gap:12px;">
+                            <div class="input-group"><label>Kod</label><input class="custom-input" id="formProdCode" readonly placeholder="CL-00001" style="color:var(--gold); font-weight:700; font-family:monospace;"/></div>
+                            <div class="input-group"><label>Nomi *</label><input class="custom-input" id="formProdName" required="" type="text"/></div>
+                            <div class="input-group"><label>Kategoriya</label><select class="custom-input" id="formProdCat" onchange="updatePreviewCodeForNew()"><option value="outerwear">Ustki kiyim (CL)</option><option value="tailoring">Kostyumlar (CM)</option><option value="knitwear">Trikotaj (CN)</option><option value="footwear">Poyabzal (CB)</option><option value="accessories">Aksessuarlar (CG)</option></select></div>
+                            <div class="input-group"><label>Narxi *</label><input class="custom-input" id="formProdPrice" required="" type="number"/></div>
+                        </div>
+                        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px;">
+                            <div class="input-group"><label>Qoldiq *</label><input class="custom-input" id="formProdStock" min="0" required="" type="number" value="8"/></div>
+                            <div class="input-group"><label>Badge</label><input class="custom-input" id="formProdBadge" type="text" value="Yangi kolleksiya"/></div>
+                            <div class="input-group"><label>O'lchamlar</label><input class="custom-input" id="formProdSizes" type="text" value="48 / M, 50 / L, 52 / XL"/></div>
+                        </div>
+                        <div class="input-group">
+                            <label>Mahsulot Rasmlari * (ko'p rasm yuklash mumkin)</label>
+                            <div class="upload-buttons">
+                                <input type="file" id="formProdImgFiles" accept="image/*" multiple style="display:none" onchange="handleMultiImageUpload(event)"/>
+                                <label for="formProdImgFiles" class="upload-btn"><i class="fas fa-cloud-upload-alt"></i> Lokal rasmlar yuklash</label>
+                                <button type="button" class="upload-btn ghost" onclick="toggleImgUrlInput()"><i class="fas fa-link"></i> URL qo'shish</button>
+                            </div>
+                            <div id="imgUrlWrap" style="display:none; margin-top:8px; gap:6px; align-items:center;">
+                                <input id="formProdImgUrl" class="custom-input" placeholder="https://..." style="flex:1;"/>
+                                <button type="button" class="btn btn-ghost btn-sm" onclick="addImgUrl()">Qo'shish</button>
+                            </div>
+                            <div id="imgPreviewGrid" class="image-grid"></div>
+                            <div style="font-size:10.5px; color:var(--text-dim); margin-top:6px;"><i class="fas fa-info-circle"></i> Birinchi rasm asosiy. Katalogda har 3.5 sek almashinadi.</div>
+                        </div>
+                        <div class="input-group"><label>Tavsif</label><textarea class="custom-input" id="formProdDesc" rows="2"></textarea></div>
+                        <div style="display:flex; gap:10px;"><button class="btn btn-primary btn-sm" type="submit"><i class="fas fa-check"></i> Saqlash</button><button class="btn btn-ghost btn-sm" onclick="closeProductEditForm()" type="button">Bekor</button></div>
+                    </form>
+                </div>
+                <div class="admin-card-box"><div style="overflow-x:auto;"><table class="admin-table"><thead><tr><th>Kod</th><th>Rasm</th><th>Nomi</th><th>Kategoriya</th><th>Narx</th><th>Qoldiq</th><th>Rasmlar</th><th>Amallar</th></tr></thead><tbody id="adminProductsTable"></tbody></table></div></div>
+            </section>
+            <!-- HERO -->
+            <section id="tab-hero" style="display:none;">
+                <div style="max-width:700px; background:var(--surface); border:1px solid var(--gold-line); border-radius:var(--r-md); padding:24px;">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;"><svg width="22" height="22" style="color:var(--gold);"><use href="#icon-star"/></svg><h4 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--ivory);">Haftaning Sarasi (Hero)</h4></div>
+                    <p style="font-size:12px; color:var(--text-sub); margin-bottom:18px;">Kod bo'yicha mahsulot tanlang. Yoki Mahsulotlar tabida ⭐ tugmasini bosing.</p>
+                    <form onsubmit="saveAdminHeroShowcase(event)">
+                        <div class="input-group"><label>Mahsulot</label><select class="custom-input" id="adminHeroProductSelect" onchange="updateHeroPreview()"></select></div>
+                        <div class="input-group"><label>Badge matni</label><input class="custom-input" id="adminHeroBadgeInput" value="Haftaning sarasi" oninput="updateHeroPreview()"/></div>
+                        <div id="heroPreviewBox" style="background:rgba(212,175,55,0.05); border:1px solid var(--gold-line); border-radius:var(--r-sm); padding:14px; margin:16px 0; display:flex; gap:12px; align-items:center;">
+                            <img id="heroPreviewImg" src="" style="width:60px; height:75px; object-fit:cover; border-radius:var(--r-sm); background:#181512;" alt=""/>
+                            <div><div style="font-size:10px; color:var(--gold); text-transform:uppercase; font-weight:700;" id="heroPreviewBadge">Haftaning sarasi</div><div style="font-family:'Playfair Display',serif; font-size:15px; color:var(--ivory);" id="heroPreviewTitle">—</div><div style="font-family:'Playfair Display',serif; font-size:14px; color:var(--gold-light); font-weight:600;" id="heroPreviewPrice">—</div><div style="font-size:10px; color:var(--text-dim); font-family:monospace;" id="heroPreviewCode">—</div></div>
+                        </div>
+                        <button class="btn btn-primary btn-sm" type="submit"><i class="fas fa-check"></i> Saqlash</button>
+                    </form>
+                </div>
+            </section>
+            <!-- BOT -->
+            <section id="tab-bot" style="display:none;">
+                <div style="max-width:700px; background:var(--surface); border:1px solid var(--gold-line); border-radius:var(--r-md); padding:24px;">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;"><svg width="24" height="24" style="color:#229ED9;"><use href="#icon-telegram"/></svg><h4 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--ivory);">Telegram Bot</h4></div>
+                    <form onsubmit="saveBotSettings(event)">
+                        <div class="input-group"><label>Bot Token</label><input class="custom-input" id="botTokenInput" required="" type="text"/></div>
+                        <div class="input-group"><label>Kanal Chat ID</label><input class="custom-input" id="botChatIdInput" required="" type="text"/></div>
+                        <div style="display:flex; gap:10px; margin-top:10px;"><button class="btn btn-primary btn-sm" type="submit"><i class="fas fa-floppy-disk"></i> Saqlash</button><button class="btn btn-ghost btn-sm" onclick="sendTestTelegramMessage()" type="button"><svg width="14" height="14"><use href="#icon-telegram"/></svg> Test</button></div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeAllModals()"></div>
+
+<div class="product-modal" id="productModal">
+    <button class="modal-close" onclick="closeProductModal()" style="position:absolute; top:12px; right:12px; z-index:10;"><i class="fas fa-times"></i></button>
+    <div class="pmodal-grid" id="productModalContent"></div>
+</div>
+
+<div class="login-modal" id="adminLoginModal">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><h4 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--ivory);"><svg width="16" height="16" style="color:var(--gold); vertical-align:middle;"><use href="#icon-shield"/></svg> Admin Kirish</h4><button class="modal-close" onclick="closeAdminLogin()"><i class="fas fa-times"></i></button></div>
+    <p style="font-size:12px; color:var(--text-sub); margin-bottom:14px;">Login: <code style="color:var(--gold);">admin</code> · Parol: <code style="color:var(--gold);">admin</code></p>
+    <form onsubmit="handleAdminLogin(event)">
+        <div class="input-group"><label>Login</label><input class="custom-input" id="adminLoginUser" required="" type="text" value="admin"/></div>
+        <div class="input-group"><label>Parol</label><input class="custom-input" id="adminLoginPass" required="" type="password" value="admin"/></div>
+        <button class="btn btn-primary" style="width:100%; margin-top:6px;" type="submit"><i class="fas fa-door-open"></i> Kirish</button>
+    </form>
+</div>
+
+<aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-head"><div><div style="font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold);" data-i18n="cart_choice">Tanlovingiz</div><h4 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--ivory);" data-i18n="cart_title">Savat</h4></div><button class="modal-close" onclick="closeCart()"><i class="fas fa-times"></i></button></div>
+    <div id="cartViewItems" style="flex:1; display:flex; flex-direction:column; min-height:0;">
+        <div class="cart-drawer-body" id="cartItemsList"></div>
+        <div id="cartEmptyState" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--text-dim); padding:30px;"><svg width="36" height="36" style="color:rgba(212,175,55,0.25); margin-bottom:8px;"><use href="#icon-bag"/></svg><p style="color:var(--text-sub); font-size:14px;" data-i18n="cart_empty">Savat bo'sh</p></div>
+        <div class="cart-drawer-foot" id="cartFooter">
+            <div class="promo-box" id="promoBox">
+                <label data-i18n="promo_label">Promo kod</label>
+                <div class="promo-input-wrap"><input id="promoInput" placeholder="ROMZ10" data-i18n-placeholder="promo_ph"/><button onclick="applyPromo()" data-i18n="promo_apply">Qo'llash</button></div>
+                <div id="promoAppliedBox" style="display:none;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:12px; color:var(--text-sub);"><span data-i18n="cart_delivery">Yetkazish:</span><span style="color:var(--gold); font-weight:600;" data-i18n="cart_free">Bepul (VIP)</span></div>
+            <div id="promoDiscountRow" style="display:none; justify-content:space-between; margin-bottom:4px; font-size:12px; color:var(--emerald);"><span data-i18n="promo_discount">Chegirma:</span><span id="promoDiscountAmount" style="font-weight:600;">-0</span></div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;"><span style="font-size:13.5px; color:var(--ivory);" data-i18n="cart_total">Jami:</span><span id="cartGrandTotal" style="font-family:'Playfair Display',serif; font-size:19px; font-weight:600; color:var(--gold-light);">0</span></div>
+            <button class="btn btn-primary" onclick="goToCheckout()" style="width:100%;"><span data-i18n="cart_btn">Buyurtma berish</span> <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
+    <div id="cartViewCheckout" style="display:none; padding:18px 22px; overflow-y:auto; flex:1;">
+        <button onclick="backToCartItems()" style="display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--text-sub); margin-bottom:14px;"><i class="fas fa-arrow-left"></i> <span data-i18n="cart_back">Qaytish</span></button>
+        <h4 style="font-family:'Playfair Display',serif; font-size:17px; color:var(--ivory); margin-bottom:12px;" data-i18n="cart_info">Mijoz ma'lumotlari</h4>
+        <form onsubmit="submitCustomerOrder(event)">
+            <div class="input-group"><label data-i18n="cart_name">Ism *</label><input class="custom-input" id="custName" required="" type="text" data-i18n-placeholder="cart_name_ph"/></div>
+            <div class="input-group"><label data-i18n="cart_phone">Telefon *</label><input class="custom-input" id="custPhone" required="" type="tel" placeholder="+998 90 123 45 67"/></div>
+            <div class="input-group"><label data-i18n="cart_addr">Manzil *</label><input class="custom-input" id="custAddress" required="" type="text" data-i18n-placeholder="cart_addr_ph"/></div>
+            <div style="background:rgba(212,175,55,0.06); border:1px solid var(--gold-line); padding:12px; border-radius:var(--r-sm); margin:14px 0;"><div style="font-size:10px; color:var(--text-dim); text-transform:uppercase;" data-i18n="cart_payment">To'lov:</div><div id="checkoutFinalSum" style="font-family:'Playfair Display',serif; font-size:18px; font-weight:600; color:var(--gold-light);">0</div><div style="font-size:10.5px; color:var(--gold-rich); margin-top:3px;"><i class="fab fa-telegram"></i> <span data-i18n="cart_note">Kanalga yuboriladi</span></div></div>
+            <button class="btn btn-primary" style="width:100%;" type="submit"><i class="fas fa-paper-plane"></i> <span data-i18n="cart_confirm">Tasdiqlash</span></button>
+        </form>
+    </div>
+</aside>
+
+<aside class="cart-drawer" id="wishlistDrawer">
+    <div class="cart-drawer-head"><div><div style="font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--rose);">❤️</div><h4 style="font-family:'Playfair Display',serif; font-size:18px; color:var(--ivory);" data-i18n="wishlist_title">Sevimlilar</h4></div><button class="modal-close" onclick="closeWishlist()"><i class="fas fa-times"></i></button></div>
+    <div class="cart-drawer-body" id="wishlistItemsList"></div>
+    <div id="wishlistEmptyState" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--text-dim); padding:30px;"><svg width="36" height="36" style="color:rgba(244,63,94,0.25); margin-bottom:8px;"><use href="#icon-heart"/></svg><p style="color:var(--text-sub); font-size:14px;" data-i18n="wishlist_empty">Sevimlilar bo'sh</p></div>
+</aside>
+
+<div class="success-overlay" id="orderSuccessModal">
+    <div class="success-card">
+        <div style="width:52px; height:52px; margin:0 auto 12px; border-radius:50%; background:linear-gradient(135deg, #E3CB94, #C5A059); display:grid; place-items:center; font-size:22px; color:#120F0B;"><i class="fas fa-check"></i></div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--ivory); margin-bottom:6px;" data-i18n="success_title">Buyurtmangiz qabul qilindi!</h3>
+        <p style="font-size:12.5px; color:var(--text-sub); line-height:1.5; margin-bottom:14px;" data-i18n="success_desc">Buyurtmangiz Telegram kanalimizga yuborildi.</p>
+        <div id="successOrderRef" style="display:inline-block; padding:5px 14px; border-radius:var(--r-full); background:var(--gold-dim); border:1px solid var(--gold-line); margin-bottom:18px; font-family:'Playfair Display',serif; font-size:14px; color:var(--gold-light); font-weight:600;">#RMZ-0000</div>
+        <button class="btn btn-primary" onclick="closeSuccessOverlay()" style="width:100%;" data-i18n="success_btn">Do'konga qaytish</button>
+    </div>
+</div>
+
+<div class="toast-wrap" id="toastBox"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
