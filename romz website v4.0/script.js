@@ -1,15 +1,11 @@
 /* =========================================================
-   ROMZ CLOTHING — To'liq script.js
-   =========================================================
-   ⚙️ ADMIN LOGIN:
-   --------------------------------------------------------- */
-const ADMIN_USERNAME = 'cyberlobo515@gmail.com';
-const ADMIN_PASSWORD = 'Samsung18_';
+   ROMZ CLOTHING — Supabase bilan to'liq ishlaydigan script.js
+   ========================================================= */
 
-/* 🤖 TELEGRAM BOT — TOKENINGIZNI SHU YERGA QO'YING */
+/* 🤖 TELEGRAM BOT */
 const TELEGRAM_CONFIG = {
-    botToken: '7982145321:AAEk9R4kLxM_demo_token_romz',
-    chatId: '@romz_clothing_orders'
+    botToken: '8661007641:AAF4wObrf6eVc1UB-sBZBRMAJ4Hczoj1xZQ', 
+    chatId: '406580906' 
 };
 
 const PROMO_CODES = {
@@ -23,64 +19,9 @@ const PROMO_CODES = {
 const CATEGORY_PREFIXES = { outerwear: 'CL', tailoring: 'CM', knitwear: 'CN', footwear: 'CB', accessories: 'CG' };
 
 const TRANSLATIONS = {
-    uz: {
-        top1:"Yangi Kuz-Qish 2025 Kolleksiyasi",top2:"O'zbekiston bo'ylab 2 kunda VIP kuryer",top3:"Telegram Bot integratsiyasi",
-        nav_all:'Barchasi',nav_outerwear:'Ustki kiyim',nav_tailoring:'Kostyumlar',nav_knitwear:'Trikotaj',nav_footwear:'Poyabzal',nav_accessories:'Aksessuarlar',
-        search_ph:'Kiyimlar qidirish...',admin_btn:'Admin',
-        hero_tag:"Kuz-Qish '25 Edition",hero_title:'Kuz &amp; Qish: <em>Haqiqiy aristokratik</em> did',hero_sub:"Yuqori darajadagi kashmir, jun va ipak matolardan tayyorlangan saralangan siluetlar.",
-        hero_cta:'Kolleksiyani kashf etish',hero_cta2:'Yangi paltolar',stat_models:'Model turlari',stat_natural:'Tabiiy matolar',stat_vip:'VIP yetkazish',stat_days:'kun',hero_badge:'Haftaning sarasi',
-        perk1_title:'Original Sifat',perk1_desc:"Har bir buyum sifat tekshiruvidan o'tgan.",perk2_title:'Telegram Bot',perk2_desc:'Buyurtma tafsilotlari kanalga yuboriladi.',perk3_title:'Premium Qadoqlash',perk3_desc:"Brend qutilari va himoya g'iloflari bilan.",
-        catalog_eyebrow:'Tanlangan kolleksiya',catalog_title:'Saralangan Katalog',sort_label:'Saralash:',sort_featured:'Tavsiya',sort_pa:'Narx ↑',sort_pd:'Narx ↓',sort_stock:'Qoldiq',
-        chip_all:'Barchasi',chip_outerwear:'Ustki kiyim',chip_tailoring:'Kostyumlar',chip_knitwear:'Trikotaj',chip_footwear:'Poyabzal',chip_accessories:'Aksessuarlar',
-        stock_left:'Qoldi',stock_out:'Qolmadi',stock_pieces:'ta',modal_size:"O'lcham:",modal_stock:'Qoldiq:',modal_in_stock:'Omborda:',modal_hurry:'(Shoshiling!)',modal_out:'Tugagan',modal_add_cart:"Savatga qo'shish",
-        cart_choice:'Tanlovingiz',cart_title:'Savat',cart_empty:"Savat bo'sh",cart_delivery:'Yetkazish:',cart_free:'Bepul (VIP)',cart_total:'Jami:',cart_btn:'Buyurtma berish',
-        cart_back:'Qaytish',cart_info:"Mijoz ma'lumotlari",cart_name:'Ism *',cart_phone:'Telefon *',cart_addr:'Manzil *',cart_payment:"To'lov:",cart_note:'Kanalga yuboriladi',cart_confirm:'Tasdiqlash',
-        cart_name_ph:'Azizbek Karimov',cart_addr_ph:'Toshkent sh., Mirobod, 12',promo_label:'Promo kod',promo_ph:'ROMZ10',promo_apply:"Qo'llash",promo_discount:'Chegirma:',
-        wishlist_title:'Sevimlilar',wishlist_empty:"Sevimlilar bo'sh",wishlist_added:"Sevimlilarga qo'shildi",wishlist_removed:"Sevimlilardan olib tashlandi",
-        footer_about:"ROMZ — nafosat va klassik dizayn uyg'unligi.",footer_collections:'Kolleksiyalar',footer_customers:'Mijozlarga',footer_contact:"Bog'lanish",
-        footer_size:"O'lcham jadvali",footer_vip:'VIP Yetkazish',footer_tg:'Telegram Bot',footer_address:'Toshkent sh., Amir Temur, 42',footer_copyright:'© 2025 ROMZ. Barcha huquqlar himoyalangan.',footer_location:'Toshkent · Bot v2.4 Active',
-        success_title:'Buyurtmangiz qabul qilindi!',success_desc:'Buyurtmangiz Telegram kanalimizga yuborildi.',success_btn:"Do'konga qaytish",
-        nav_store:"Do'kon",nav_cart:'Savat',nav_wishlist:'Wishlist',promo_applied:"Promo kod qo'llanildi",promo_invalid:"Promo kod noto'g'ri",promo_removed:"Promo kod o'chirildi",
-        added_cart:"savatga qo'shildi",out_of_stock:'Qoldiq tugagan'
-    },
-    en: {
-        top1:'New Fall-Winter 2025 Collection',top2:'VIP courier across Uzbekistan in 2 days',top3:'Telegram Bot integration',
-        nav_all:'All',nav_outerwear:'Outerwear',nav_tailoring:'Suits',nav_knitwear:'Knitwear',nav_footwear:'Footwear',nav_accessories:'Accessories',
-        search_ph:'Search clothing...',admin_btn:'Admin',hero_tag:"Fall-Winter '25 Edition",hero_title:"Fall & Winter: <em>True aristocratic</em> taste",hero_sub:'Curated silhouettes crafted from premium cashmere, wool and silk.',
-        hero_cta:'Explore collection',hero_cta2:'New coats',stat_models:'Models',stat_natural:'Natural fabrics',stat_vip:'VIP delivery',stat_days:'days',hero_badge:"Week's Pick",
-        perk1_title:'Original Quality',perk1_desc:'Every item passes strict quality control.',perk2_title:'Telegram Bot',perk2_desc:'Order details are sent to our channel.',perk3_title:'Premium Packaging',perk3_desc:'Brand boxes and protective covers.',
-        catalog_eyebrow:'Curated collection',catalog_title:'Selected Catalog',sort_label:'Sort:',sort_featured:'Featured',sort_pa:'Price ↑',sort_pd:'Price ↓',sort_stock:'Stock',
-        chip_all:'All',chip_outerwear:'Outerwear',chip_tailoring:'Suits',chip_knitwear:'Knitwear',chip_footwear:'Footwear',chip_accessories:'Accessories',
-        stock_left:'Left',stock_out:'Sold out',stock_pieces:'pcs',modal_size:'Size:',modal_stock:'Stock:',modal_in_stock:'In stock:',modal_hurry:'(Hurry!)',modal_out:'Sold out',modal_add_cart:'Add to cart',
-        cart_choice:'Your selection',cart_title:'Cart',cart_empty:'Cart is empty',cart_delivery:'Delivery:',cart_free:'Free (VIP)',cart_total:'Total:',cart_btn:'Checkout',
-        cart_back:'Back',cart_info:'Customer info',cart_name:'Name *',cart_phone:'Phone *',cart_addr:'Address *',cart_payment:'Total:',cart_note:'Sent to channel',cart_confirm:'Confirm order',
-        cart_name_ph:'John Doe',cart_addr_ph:'Tashkent, Mirabad, 12',promo_label:'Promo code',promo_ph:'ROMZ10',promo_apply:'Apply',promo_discount:'Discount:',
-        wishlist_title:'Wishlist',wishlist_empty:'Wishlist is empty',wishlist_added:'Added to wishlist',wishlist_removed:'Removed from wishlist',
-        footer_about:'ROMZ — harmony of elegance and classic design.',footer_collections:'Collections',footer_customers:'Customers',footer_contact:'Contact',
-        footer_size:'Size chart',footer_vip:'VIP Delivery',footer_tg:'Telegram Bot',footer_address:'Tashkent, Amir Temur, 42',footer_copyright:'© 2025 ROMZ. All rights reserved.',footer_location:'Tashkent · Bot v2.4 Active',
-        success_title:'Your order is confirmed!',success_desc:'Your order was sent to our Telegram channel.',success_btn:'Back to store',
-        nav_store:'Store',nav_cart:'Cart',nav_wishlist:'Wishlist',promo_applied:'Promo code applied',promo_invalid:'Invalid promo code',promo_removed:'Promo code removed',
-        added_cart:'added to cart',out_of_stock:'Out of stock'
-    },
-    ru: {
-        top1:'Новая коллекция Осень-Зима 2025',top2:'VIP-курьер по Узбекистану за 2 дня',top3:'Интеграция с Telegram Bot',
-        nav_all:'Все',nav_outerwear:'Верхняя одежда',nav_tailoring:'Костюмы',nav_knitwear:'Трикотаж',nav_footwear:'Обувь',nav_accessories:'Аксессуары',
-        search_ph:'Поиск одежды...',admin_btn:'Админ',hero_tag:"Осень-Зима '25 Edition",hero_title:'Осень & Зима: <em>Истинно аристократичный</em> вкус',hero_sub:'Избранные силуэты из премиального кашемира, шерсти и шелка.',
-        hero_cta:'Смотреть коллекцию',hero_cta2:'Новые пальто',stat_models:'Моделей',stat_natural:'Натуральные ткани',stat_vip:'VIP доставка',stat_days:'дня',hero_badge:'Выбор недели',
-        perk1_title:'Гарантия качества',perk1_desc:'Каждое изделие проходит контроль качества.',perk2_title:'Telegram Bot',perk2_desc:'Детали заказа отправляются в канал.',perk3_title:'Премиум упаковка',perk3_desc:'Брендовые коробки и защитные чехлы.',
-        catalog_eyebrow:'Избранная коллекция',catalog_title:'Избранный каталог',sort_label:'Сортировка:',sort_featured:'Рекомендуемые',sort_pa:'Цена ↑',sort_pd:'Цена ↓',sort_stock:'Остаток',
-        chip_all:'Все',chip_outerwear:'Верхняя одежда',chip_tailoring:'Костюмы',chip_knitwear:'Трикотаж',chip_footwear:'Обувь',chip_accessories:'Аксессуары',
-        stock_left:'Осталось',stock_out:'Нет',stock_pieces:'шт',modal_size:'Размер:',modal_stock:'Остаток:',modal_in_stock:'В наличии:',modal_hurry:'(Спешите!)',modal_out:'Распродано',modal_add_cart:'В корзину',
-        cart_choice:'Ваш выбор',cart_title:'Корзина',cart_empty:'Корзина пуста',cart_delivery:'Доставка:',cart_free:'Бесплатно (VIP)',cart_total:'Итого:',cart_btn:'Оформить',
-        cart_back:'Назад',cart_info:'Данные клиента',cart_name:'Имя *',cart_phone:'Телефон *',cart_addr:'Адрес *',cart_payment:'Сумма:',cart_note:'Отправляется в канал',cart_confirm:'Подтвердить заказ',
-        cart_name_ph:'Иван Иванов',cart_addr_ph:'Ташкент, Мирабад, 12',promo_label:'Промокод',promo_ph:'ROMZ10',promo_apply:'Применить',promo_discount:'Скидка:',
-        wishlist_title:'Избранное',wishlist_empty:'Избранное пусто',wishlist_added:'Добавлено в избранное',wishlist_removed:'Удалено из избранного',
-        footer_about:'ROMZ — гармония элегантности и классического дизайна.',footer_collections:'Коллекции',footer_customers:'Клиентам',footer_contact:'Контакты',
-        footer_size:'Таблица размеров',footer_vip:'VIP доставка',footer_tg:'Telegram Bot',footer_address:'Ташкент, Амира Темура, 42',footer_copyright:'© 2025 ROMZ. Все права защищены.',footer_location:'Ташкент · Bot v2.4 Active',
-        success_title:'Ваш заказ принят!',success_desc:'Заказ отправлен в наш Telegram канал.',success_btn:'Вернуться в магазин',
-        nav_store:'Магазин',nav_cart:'Корзина',nav_wishlist:'Избранное',promo_applied:'Промокод применён',promo_invalid:'Неверный промокод',promo_removed:'Промокод удалён',
-        added_cart:'добавлено в корзину',out_of_stock:'Нет в наличии'
-    }
+    uz: { top1:"Yangi Kuz-Qish 2025 Kolleksiyasi",top2:"O'zbekiston bo'ylab 2 kunda VIP kuryer",top3:"Telegram Bot integratsiyasi",nav_all:'Barchasi',nav_outerwear:'Ustki kiyim',nav_tailoring:'Kostyumlar',nav_knitwear:'Trikotaj',nav_footwear:'Poyabzal',nav_accessories:'Aksessuarlar',search_ph:'Kiyimlar qidirish...',admin_btn:'Admin',hero_tag:"Kuz-Qish '25 Edition",hero_title:'Kuz &amp; Qish: <em>Haqiqiy aristokratik</em> did',hero_sub:"Yuqori darajadagi kashmir, jun va ipak matolardan tayyorlangan saralangan siluetlar.",hero_cta:'Kolleksiyani kashf etish',hero_cta2:'Yangi paltolar',stat_models:'Model turlari',stat_natural:'Tabiiy matolar',stat_vip:'VIP yetkazish',stat_days:'kun',hero_badge:'Haftaning sarasi',perk1_title:'Original Sifat',perk1_desc:"Har bir buyum sifat tekshiruvidan o'tgan.",perk2_title:'Telegram Bot',perk2_desc:'Buyurtma tafsilotlari kanalga yuboriladi.',perk3_title:'Premium Qadoqlash',perk3_desc:"Brend qutilari va himoya g'iloflari bilan.",catalog_eyebrow:'Tanlangan kolleksiya',catalog_title:'Saralangan Katalog',sort_label:'Saralash:',sort_featured:'Tavsiya',sort_pa:'Narx ↑',sort_pd:'Narx ↓',sort_stock:'Qoldiq',chip_all:'Barchasi',chip_outerwear:'Ustki kiyim',chip_tailoring:'Kostyumlar',chip_knitwear:'Trikotaj',chip_footwear:'Poyabzal',chip_accessories:'Aksessuarlar',stock_left:'Qoldi',stock_out:'Qolmadi',stock_pieces:'ta',modal_size:"O'lcham:",modal_stock:'Qoldiq:',modal_in_stock:'Omborda:',modal_hurry:'(Shoshiling!)',modal_out:'Tugagan',modal_add_cart:"Savatga qo'shish",cart_choice:'Tanlovingiz',cart_title:'Savat',cart_empty:"Savat bo'sh",cart_delivery:'Yetkazish:',cart_free:'Bepul (VIP)',cart_total:'Jami:',cart_btn:'Buyurtma berish',cart_back:'Qaytish',cart_info:"Mijoz ma'lumotlari",cart_name:'Ism *',cart_phone:'Telefon *',cart_addr:'Manzil *',cart_payment:"To'lov:",cart_note:'Kanalga yuboriladi',cart_confirm:'Tasdiqlash',cart_name_ph:'Azizbek Karimov',cart_addr_ph:'Toshkent sh., Mirobod, 12',promo_label:'Promo kod',promo_ph:'ROMZ10',promo_apply:"Qo'llash",promo_discount:'Chegirma:',wishlist_title:'Sevimlilar',wishlist_empty:"Sevimlilar bo'sh",wishlist_added:"Sevimlilarga qo'shildi",wishlist_removed:"Sevimlilardan olib tashlandi",footer_about:"ROMZ — nafosat va klassik dizayn uyg'unligi.",footer_collections:'Kolleksiyalar',footer_customers:'Mijozlarga',footer_contact:"Bog'lanish",footer_size:"O'lcham jadvali",footer_vip:'VIP Yetkazish',footer_tg:'Telegram Bot',footer_address:'Toshkent sh., Amir Temur, 42',footer_copyright:'© 2025 ROMZ. Barcha huquqlar himoyalangan.',footer_location:'Toshkent · Bot v2.4 Active',success_title:'Buyurtmangiz qabul qilindi!',success_desc:'Buyurtmangiz Telegram kanalimizga yuborildi.',success_btn:"Do'konga qaytish",nav_store:"Do'kon",nav_cart:'Savat',nav_wishlist:'Wishlist',promo_applied:"Promo kod qo'llanildi",promo_invalid:"Promo kod noto'g'ri",promo_removed:"Promo kod o'chirildi",added_cart:"savatga qo'shildi",out_of_stock:'Qoldiq tugagan' },
+    en: { top1:'New Fall-Winter 2025 Collection',top2:'VIP courier across Uzbekistan in 2 days',top3:'Telegram Bot integration',nav_all:'All',nav_outerwear:'Outerwear',nav_tailoring:'Suits',nav_knitwear:'Knitwear',nav_footwear:'Footwear',nav_accessories:'Accessories',search_ph:'Search clothing...',admin_btn:'Admin',hero_tag:"Fall-Winter '25 Edition",hero_title:"Fall & Winter: <em>True aristocratic</em> taste",hero_sub:'Curated silhouettes crafted from premium cashmere, wool and silk.',hero_cta:'Explore collection',hero_cta2:'New coats',stat_models:'Models',stat_natural:'Natural fabrics',stat_vip:'VIP delivery',stat_days:'days',hero_badge:"Week's Pick",perk1_title:'Original Quality',perk1_desc:'Every item passes strict quality control.',perk2_title:'Telegram Bot',perk2_desc:'Order details are sent to our channel.',perk3_title:'Premium Packaging',perk3_desc:'Brand boxes and protective covers.',catalog_eyebrow:'Curated collection',catalog_title:'Selected Catalog',sort_label:'Sort:',sort_featured:'Featured',sort_pa:'Price ↑',sort_pd:'Price ↓',sort_stock:'Stock',chip_all:'All',chip_outerwear:'Outerwear',chip_tailoring:'Suits',chip_knitwear:'Knitwear',chip_footwear:'Footwear',chip_accessories:'Accessories',stock_left:'Left',stock_out:'Sold out',stock_pieces:'pcs',modal_size:'Size:',modal_stock:'Stock:',modal_in_stock:'In stock:',modal_hurry:'(Hurry!)',modal_out:'Sold out',modal_add_cart:'Add to cart',cart_choice:'Your selection',cart_title:'Cart',cart_empty:'Cart is empty',cart_delivery:'Delivery:',cart_free:'Free (VIP)',cart_total:'Total:',cart_btn:'Checkout',cart_back:'Back',cart_info:'Customer info',cart_name:'Name *',cart_phone:'Phone *',cart_addr:'Address *',cart_payment:'Total:',cart_note:'Sent to channel',cart_confirm:'Confirm order',cart_name_ph:'John Doe',cart_addr_ph:'Tashkent, Mirabad, 12',promo_label:'Promo code',promo_ph:'ROMZ10',promo_apply:'Apply',promo_discount:'Discount:',wishlist_title:'Wishlist',wishlist_empty:'Wishlist is empty',wishlist_added:'Added to wishlist',wishlist_removed:'Removed from wishlist',footer_about:'ROMZ — harmony of elegance and classic design.',footer_collections:'Collections',footer_customers:'Customers',footer_contact:'Contact',footer_size:'Size chart',footer_vip:'VIP Delivery',footer_tg:'Telegram Bot',footer_address:'Tashkent, Amir Temur, 42',footer_copyright:'© 2025 ROMZ. All rights reserved.',footer_location:'Tashkent · Bot v2.4 Active',success_title:'Your order is confirmed!',success_desc:'Your order was sent to our Telegram channel.',success_btn:'Back to store',nav_store:'Store',nav_cart:'Cart',nav_wishlist:'Wishlist',promo_applied:'Promo code applied',promo_invalid:'Invalid promo code',promo_removed:'Promo code removed',added_cart:'added to cart',out_of_stock:'Out of stock' },
+    ru: { top1:'Новая коллекция Осень-Зима 2025',top2:'VIP-курьер по Узбекистану за 2 дня',top3:'Интеграция с Telegram Bot',nav_all:'Все',nav_outerwear:'Верхняя одежда',nav_tailoring:'Костюмы',nav_knitwear:'Трикотаж',nav_footwear:'Обувь',nav_accessories:'Аксессуары',search_ph:'Поиск одежды...',admin_btn:'Админ',hero_tag:"Осень-Зима '25 Edition",hero_title:'Осень & Зима: <em>Истинно аристократичный</em> вкус',hero_sub:'Избранные силуэты из премиального кашемира, шерсти и шелка.',hero_cta:'Смотреть коллекцию',hero_cta2:'Новые пальто',stat_models:'Моделей',stat_natural:'Натуральные ткани',stat_vip:'VIP доставка',stat_days:'дня',hero_badge:'Выбор недели',perk1_title:'Гарантия качества',perk1_desc:'Каждое изделие проходит контроль качества.',perk2_title:'Telegram Bot',perk2_desc:'Детали заказа отправляются в канал.',perk3_title:'Премиум упаковка',perk3_desc:'Брендовые коробки и защитные чехлы.',catalog_eyebrow:'Избранная коллекция',catalog_title:'Избранный каталог',sort_label:'Сортировка:',sort_featured:'Рекомендуемые',sort_pa:'Цена ↑',sort_pd:'Цена ↓',sort_stock:'Остаток',chip_all:'Все',chip_outerwear:'Верхняя одежда',chip_tailoring:'Костюмы',chip_knitwear:'Трикотаж',chip_footwear:'Обувь',chip_accessories:'Аксессуары',stock_left:'Осталось',stock_out:'Нет',stock_pieces:'шт',modal_size:'Размер:',modal_stock:'Остаток:',modal_in_stock:'В наличии:',modal_hurry:'(Спешите!)',modal_out:'Распродано',modal_add_cart:'В корзину',cart_choice:'Ваш выбор',cart_title:'Корзина',cart_empty:'Корзина пуста',cart_delivery:'Доставка:',cart_free:'Бесплатно (VIP)',cart_total:'Итого:',cart_btn:'Оформить',cart_back:'Назад',cart_info:'Данные клиента',cart_name:'Имя *',cart_phone:'Телефон *',cart_addr:'Адрес *',cart_payment:'Сумма:',cart_note:'Отправляется в канал',cart_confirm:'Подтвердить заказ',cart_name_ph:'Иван Иванов',cart_addr_ph:'Ташкент, Мирабад, 12',promo_label:'Промокод',promo_ph:'ROMZ10',promo_apply:'Применить',promo_discount:'Скидка:',wishlist_title:'Избранное',wishlist_empty:'Избранное пусто',wishlist_added:'Добавлено в избранное',wishlist_removed:'Удалено из избранного',footer_about:'ROMZ — гармония элегантности и классического дизайна.',footer_collections:'Коллекции',footer_customers:'Клиентам',footer_contact:'Контакты',footer_size:'Таблица размеров',footer_vip:'VIP доставка',footer_tg:'Telegram Bot',footer_address:'Ташкент, Амира Темура, 42',footer_copyright:'© 2025 ROMZ. Все права защищены.',footer_location:'Ташкент · Bot v2.4 Active',success_title:'Ваш заказ принят!',success_desc:'Заказ отправлен в наш Telegram канал.',success_btn:'Вернуться в магазин',nav_store:'Магазин',nav_cart:'Корзина',nav_wishlist:'Избранное',promo_applied:'Промокод применён',promo_invalid:'Неверный промокод',promo_removed:'Промокод удалён',added_cart:'добавлено в корзину',out_of_stock:'Нет в наличии' }
 };
 
 const CATEGORY_LABELS = {
@@ -89,27 +30,11 @@ const CATEGORY_LABELS = {
     ru: { outerwear:'Верхняя одежда',tailoring:'Костюмы',knitwear:'Трикотаж',footwear:'Обувь',accessories:'Аксессуары' }
 };
 
-const INITIAL_PRODUCTS = [
-    { id:'rmz-01', name:'Double-Breasted Cashmere Overcoat', price:3850000, category:'outerwear', badge:'Kuz-Qish 2025', stock:8, image:'https://lh3.googleusercontent.com/aida-public/AB6AXuAHaFpZx4Qjcu2EwmMPc6S7o5bzBkstDu-WVCxevTq-M79kSEKgmuGRMJ-li2tjLaoYRdIYeo2GT4qvckNS5Mj04yfuL_e-qCMYDwV_0X7syVdlfP3CjLOIC5VeMli3wyG67LETApWCun7FQBaa4AWOtSwtrTYMR6psd9n2aFipQz8txMyAWDlsXRuaUsoAeY7ZpHnBtMbntbUjrzQPLOGR0zkDs1jF-ajJHq3xIWd4qG35RqoITyzGVQ', description:'Italiya kashmiri va merinos juni.', sizes:['48 / M','50 / L','52 / XL'], featured:10 },
-    { id:'rmz-02', name:'Sartorial Velvet Evening Blazer', price:2950000, category:'tailoring', badge:'Kechki libos', stock:4, image:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80', description:'Qora baxmal smoking pidjak.', sizes:['48 / M','50 / L','52 / XL'], featured:9 },
-    { id:'rmz-03', name:'Heavy-Gauge Merino Knit Sweater', price:1450000, category:'knitwear', badge:'Issiq Tanlov', stock:12, image:'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80', description:'100% mayin merinos juni.', sizes:['S','M','L','XL'], featured:8 },
-    { id:'rmz-04', name:'Handcrafted Oxford Calfskin Shoes', price:2600000, category:'footwear', badge:'Handmade', stock:3, image:'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=800&q=80', description:'Goodyear Welted teri poyabzal.', sizes:['40','41','42','43'], featured:7 },
-    { id:'rmz-05', name:'Silk-Wool Herringbone Tailored Coat', price:4100000, category:'outerwear', badge:'Premium Silk', stock:5, image:'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80', description:'Ipak va jun baliq suyagi palto.', sizes:['48 / M','50 / L','52 / XL'], featured:9 },
-    { id:'rmz-06', name:'Full-Grain Leather Weekender Bag', price:1980000, category:'accessories', badge:'Travel', stock:6, image:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80', description:'Qalin tabiiy charm sumka.', sizes:['Standart'], featured:6 },
-    { id:'rmz-07', name:'Tailored Wool Flannel Trousers', price:1250000, category:'tailoring', badge:'Klassika', stock:9, image:'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=800&q=80', description:'Italyan flaneli shim.', sizes:['30','32','34'], featured:7 },
-    { id:'rmz-08', name:'Silk Jacquard Evening Scarf', price:680000, category:'accessories', badge:'100% Ipak', stock:14, image:'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=800&q=80', description:'Jakkard ipak sharf.', sizes:['Universal'], featured:5 }
-];
-
-const INITIAL_ORDERS = [
-    { id:'#RMZ-8421', date:'Bugun 14:20', customer:'Javohir Toshpulatov', phone:'+998 97 712 34 56', address:'Toshkent sh., Yunusobod', items:[{ name:'Cashmere Overcoat', size:'52', qty:1 }], total:3850000, status:'Yetkazilmoqda' },
-    { id:'#RMZ-8419', date:'Bugun 11:05', customer:'Bobur Mirzayev', phone:'+998 90 980 11 22', address:'Samarqand sh.', items:[{ name:'Velvet Blazer', size:'50', qty:1 }], total:2950000, status:'Yakunlandi' }
-];
-
 let state = {
     lang: localStorage.getItem('romz_lang') || 'uz',
-    products: JSON.parse(localStorage.getItem('romz_p') || 'null') || INITIAL_PRODUCTS,
-    orders: JSON.parse(localStorage.getItem('romz_o') || 'null') || INITIAL_ORDERS,
-    hero: JSON.parse(localStorage.getItem('romz_h') || 'null') || { productCode:null, badge:'Haftaning sarasi' },
+    products: [], 
+    orders: [],   
+    hero: { productCode: null, badge: 'Haftaning sarasi' },
     botToken: localStorage.getItem('romz_token') || TELEGRAM_CONFIG.botToken,
     botChatId: localStorage.getItem('romz_chatid') || TELEGRAM_CONFIG.chatId,
     cart: [],
@@ -121,31 +46,11 @@ let state = {
     modalProd: null,
     modalSize: null,
     modalImgIdx: 0,
-    tempImages: []
+    tempImages: [],
+    isAdmin: false
 };
 
 let cardTimers = [];
-
-function initMigrations() {
-    let changed = false;
-    state.products.forEach(p => {
-        if (!p.images) { p.images = p.image ? [p.image] : []; changed = true; }
-        if (!p.code) {
-            const prefix = CATEGORY_PREFIXES[p.category] || 'CL';
-            let maxNum = 0;
-            state.products.forEach(o => {
-                if (o.code && o.code.startsWith(prefix + '-')) {
-                    const n = parseInt(o.code.split('-')[1]);
-                    if (!isNaN(n) && n > maxNum) maxNum = n;
-                }
-            });
-            p.code = prefix + '-' + String(maxNum + 1).padStart(5, '0');
-            changed = true;
-        }
-    });
-    if (!state.hero.productCode && state.products.length > 0) { state.hero.productCode = state.products[0].code; changed = true; }
-    if (changed) saveState();
-}
 
 function generateNextCode(category) {
     const prefix = CATEGORY_PREFIXES[category] || 'CL';
@@ -162,19 +67,14 @@ function generateNextCode(category) {
 function getProductByCode(code) { return state.products.find(p => p.code === code); }
 function t(key) { return TRANSLATIONS[state.lang][key] || key; }
 
-function saveState() {
+function saveLocalState() {
     try {
-        localStorage.setItem('romz_p', JSON.stringify(state.products));
-        localStorage.setItem('romz_o', JSON.stringify(state.orders));
-        localStorage.setItem('romz_h', JSON.stringify(state.hero));
         localStorage.setItem('romz_token', state.botToken);
         localStorage.setItem('romz_chatid', state.botChatId);
         localStorage.setItem('romz_wishlist', JSON.stringify(state.wishlist));
         localStorage.setItem('romz_promo', JSON.stringify(state.appliedPromo));
         localStorage.setItem('romz_lang', state.lang);
-    } catch (e) {
-        if (e.name === 'QuotaExceededError') showToast("Xotira to'ldi!", 'fa-triangle-exclamation');
-    }
+    } catch (e) {}
 }
 
 function formatUZS(val) { return Number(val).toLocaleString('uz-UZ') + " so'm"; }
@@ -190,38 +90,22 @@ function showToast(text, icon = 'fa-check') {
 
 function applyLanguage(lang) {
     state.lang = lang;
-    saveState();
+    saveLocalState();
     const trans = TRANSLATIONS[lang];
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.dataset.i18n;
-        if (trans[key] !== undefined) el.textContent = trans[key];
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(el => {
-        const key = el.dataset.i18nHtml;
-        if (trans[key] !== undefined) el.innerHTML = trans[key];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const key = el.dataset.i18nPlaceholder;
-        if (trans[key] !== undefined) el.placeholder = trans[key];
-    });
+    document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.dataset.i18n; if (trans[key] !== undefined) el.textContent = trans[key]; });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => { const key = el.dataset.i18nHtml; if (trans[key] !== undefined) el.innerHTML = trans[key]; });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key = el.dataset.i18nPlaceholder; if (trans[key] !== undefined) el.placeholder = trans[key]; });
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-    renderCatalog();
-    renderHero();
-    updateCartUI();
-    updateWishlistUI();
-    populateHeroProductSelect();
-    updateHeroPreview();
+    
+    renderCatalog(); renderHero(); updateCartUI(); updateWishlistUI(); populateHeroProductSelect(); updateHeroPreview();
 }
 
 async function sendTelegramAlert(text) {
     const token = state.botToken.trim(), chatId = state.botChatId.trim();
     if (!token || !chatId) return true;
     try {
-        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method:'POST', headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: 'HTML' })
-        });
-    } catch (e) { console.log('TG demo:', text); }
+        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: 'HTML' }) });
+    } catch (e) { console.log('TG xato:', e); }
     return true;
 }
 
@@ -277,9 +161,7 @@ function renderCatalog() {
         const isLow = p.stock <= 4;
         const isWished = state.wishlist.includes(p.id);
         const catLabel = CATEGORY_LABELS[lang][p.category] || p.category;
-        const stockHtml = p.stock > 0
-            ? `<div class="stock-tag ${isLow ? 'low' : 'good'}"><span style="width:6px; height:6px; border-radius:50%; background:${isLow ? 'var(--rose)' : 'var(--emerald)'};"></span> ${t('stock_left')}: ${p.stock} ${t('stock_pieces')}</div>`
-            : `<div class="stock-tag low">${t('stock_out')}</div>`;
+        const stockHtml = p.stock > 0 ? `<div class="stock-tag ${isLow ? 'low' : 'good'}"><span style="width:6px; height:6px; border-radius:50%; background:${isLow ? 'var(--rose)' : 'var(--emerald)'};"></span> ${t('stock_left')}: ${p.stock} ${t('stock_pieces')}</div>` : `<div class="stock-tag low">${t('stock_out')}</div>`;
         const dots = imgs.length > 1 ? `<div class="img-dots">${imgs.map((_, i) => `<span class="img-dot ${i===0?'active':''}"></span>`).join('')}</div>` : '';
         return `
             <article class="product-card" data-product-id="${p.id}" onclick="openProductModal('${p.id}')">
@@ -318,10 +200,7 @@ function startImageRotation() {
             if (!document.contains(card)) { clearInterval(timer); return; }
             idx = (idx + 1) % product.images.length;
             const imgEl = card.querySelector('.product-main-img');
-            if (imgEl) {
-                imgEl.style.opacity = '0';
-                setTimeout(() => { imgEl.src = product.images[idx]; imgEl.style.opacity = '1'; }, 180);
-            }
+            if (imgEl) { imgEl.style.opacity = '0'; setTimeout(() => { imgEl.src = product.images[idx]; imgEl.style.opacity = '1'; }, 180); }
             card.querySelectorAll('.img-dot').forEach((dot, i) => dot.classList.toggle('active', i === idx));
         }, 3500);
         cardTimers.push(timer);
@@ -394,9 +273,7 @@ function toggleWishlist(id) {
     const idx = state.wishlist.indexOf(id);
     if (idx >= 0) { state.wishlist.splice(idx, 1); showToast(t('wishlist_removed'), 'fa-heart-broken'); }
     else { state.wishlist.push(id); showToast(t('wishlist_added'), 'fa-heart'); }
-    saveState();
-    renderCatalog();
-    updateWishlistUI();
+    saveLocalState(); renderCatalog(); updateWishlistUI();
 }
 
 function toggleWishlistFromModal(id) {
@@ -497,14 +374,11 @@ function updateCartUI() {
     const promoRow = document.getElementById('promoDiscountRow');
     const promoAmt = document.getElementById('promoDiscountAmount');
     if (state.appliedPromo) {
-        promoRow.style.display = 'flex';
-        promoAmt.innerText = '-' + formatUZS(discount);
+        promoRow.style.display = 'flex'; promoAmt.innerText = '-' + formatUZS(discount);
         document.getElementById('promoAppliedBox').style.display = 'block';
         document.getElementById('promoAppliedBox').innerHTML = `<div class="promo-applied"><span><i class="fas fa-check-circle"></i> ${state.appliedPromo.code} — ${state.appliedPromo.label}</span><button onclick="removePromo()">×</button></div>`;
     } else {
-        promoRow.style.display = 'none';
-        document.getElementById('promoAppliedBox').style.display = 'none';
-        document.getElementById('promoAppliedBox').innerHTML = '';
+        promoRow.style.display = 'none'; document.getElementById('promoAppliedBox').style.display = 'none'; document.getElementById('promoAppliedBox').innerHTML = '';
     }
     list.innerHTML = state.cart.map((item, i) => `
         <div class="cart-line">
@@ -531,18 +405,10 @@ function applyPromo() {
     const promo = PROMO_CODES[code];
     if (!promo) { showToast(t('promo_invalid'), 'fa-circle-xmark'); return; }
     state.appliedPromo = { code, ...promo };
-    saveState();
-    updateCartUI();
-    showToast(`${t('promo_applied')}: ${promo.label}`, 'fa-ticket');
+    saveLocalState(); updateCartUI(); showToast(`${t('promo_applied')}: ${promo.label}`, 'fa-ticket');
     document.getElementById('promoInput').value = '';
 }
-
-function removePromo() {
-    state.appliedPromo = null;
-    saveState();
-    updateCartUI();
-    showToast(t('promo_removed'), 'fa-times');
-}
+function removePromo() { state.appliedPromo = null; saveLocalState(); updateCartUI(); showToast(t('promo_removed'), 'fa-times'); }
 
 function openCart() { document.getElementById('cartViewItems').style.display = 'flex'; document.getElementById('cartViewCheckout').style.display = 'none'; document.getElementById('cartDrawer').classList.add('open'); document.getElementById('modalBackdrop').classList.add('show'); }
 function closeCart() { document.getElementById('cartDrawer').classList.remove('open'); checkBackdrop(); }
@@ -550,67 +416,32 @@ function goToCheckout() { document.getElementById('cartViewItems').style.display
 function backToCartItems() { document.getElementById('cartViewItems').style.display = 'flex'; document.getElementById('cartViewCheckout').style.display = 'none'; }
 
 function dataURLtoBlob(dataURL) {
-    const arr = dataURL.split(',');
-    const mime = arr[0].match(/:(.*?);/)[1];
-    const bstr = atob(arr[1]);
-    let n = bstr.length;
-    const u8arr = new Uint8Array(n);
-    while (n--) u8arr[n] = bstr.charCodeAt(n);
-    return new Blob([u8arr], { type: mime });
+    const arr = dataURL.split(','); const mime = arr[0].match(/:(.*?);/)[1]; const bstr = atob(arr[1]);
+    let n = bstr.length; const u8arr = new Uint8Array(n);
+    while (n--) u8arr[n] = bstr.charCodeAt(n); return new Blob([u8arr], { type: mime });
 }
 
-function getShareLink(code) {
-    if (!window.location.protocol.startsWith('http')) return null;
-    return window.location.origin + window.location.pathname + '?product=' + code;
-}
+function getShareLink(code) { if (!window.location.protocol.startsWith('http')) return null; return window.location.origin + window.location.pathname + '?product=' + code; }
 
 async function sendOrderToTelegram({ orderId, name, phone, address, total, discount, items }) {
-    const token = state.botToken.trim();
-    const chatId = state.botChatId.trim();
+    const token = state.botToken.trim(); const chatId = state.botChatId.trim();
     if (!token || !chatId) return;
-    const firstItem = items[0];
-    const firstProd = state.products.find(p => p.id === firstItem.id);
+    const firstItem = items[0]; const firstProd = state.products.find(p => p.id === firstItem.id);
     const mainImage = firstProd?.images?.[0] || firstProd?.image || firstItem.image;
     const shareLink = firstProd ? getShareLink(firstProd.code) : null;
-    const itemsList = items.map(c => {
-        const p = state.products.find(x => x.id === c.id);
-        return `• <b>${c.name}</b> (${c.size}) × ${c.qty} — ${formatUZS(c.price * c.qty)}\n  <code>${p?.code || ''}</code>`;
-    }).join('\n');
-    let caption =
-        `🔥 <b>YANGI SOTUV! ${orderId}</b>\n\n` +
-        `✅ <b>Ushbu kiyim sotildi! Siz ham ulgurib qoling!</b>\n\n` +
-        `👤 <b>Xaridor:</b> ${name}\n` +
-        `📞 <b>Telefon:</b> <a href="tel:${phone}">${phone}</a>\n` +
-        `📍 <b>Manzil:</b> ${address}\n\n` +
-        `━━━━━━━━━━━━━━━━━━\n` +
-        `🛍 <b>Mahsulot(lar):</b>\n${itemsList}\n` +
-        `━━━━━━━━━━━━━━━━━━\n\n`;
-    if (state.appliedPromo) {
-        caption += `🎟 <b>Promo:</b> ${state.appliedPromo.code} (<i>${state.appliedPromo.label}</i>)\n`;
-        caption += `💸 <b>Chegirma:</b> -${formatUZS(discount)}\n`;
-    }
+    const itemsList = items.map(c => { const p = state.products.find(x => x.id === c.id); return `• <b>${c.name}</b> (${c.size}) × ${c.qty} — ${formatUZS(c.price * c.qty)}\n  <code>${p?.code || ''}</code>`; }).join('\n');
+    let caption = `🔥 <b>YANGI SOTUV! ${orderId}</b>\n\n✅ <b>Ushbu kiyim sotildi! Siz ham ulgurib qoling!</b>\n\n👤 <b>Xaridor:</b> ${name}\n📞 <b>Telefon:</b> <a href="tel:${phone}">${phone}</a>\n📍 <b>Manzil:</b> ${address}\n\n━━━━━━━━━━━━━━━━━━\n🛍 <b>Mahsulot(lar):</b>\n${itemsList}\n━━━━━━━━━━━━━━━━━━\n\n`;
+    if (state.appliedPromo) { caption += `🎟 <b>Promo:</b> ${state.appliedPromo.code} (<i>${state.appliedPromo.label}</i>)\n💸 <b>Chegirma:</b> -${formatUZS(discount)}\n`; }
     caption += `💰 <b>JAMI:</b> <b>${formatUZS(total)}</b>\n`;
     if (shareLink) caption += `\n🔗 <a href="${shareLink}">Mahsulotni ko'rish</a>`;
     try {
-        const formData = new FormData();
-        formData.append('chat_id', chatId);
-        formData.append('caption', caption);
-        formData.append('parse_mode', 'HTML');
-        formData.append('disable_web_page_preview', 'false');
-        if (mainImage && mainImage.startsWith('data:')) {
-            const blob = dataURLtoBlob(mainImage);
-            formData.append('photo', blob, 'product.jpg');
-        } else if (mainImage) {
-            formData.append('photo', mainImage);
-        }
+        const formData = new FormData(); formData.append('chat_id', chatId); formData.append('caption', caption); formData.append('parse_mode', 'HTML'); formData.append('disable_web_page_preview', 'false');
+        if (mainImage && mainImage.startsWith('data:')) { formData.append('photo', dataURLtoBlob(mainImage), 'product.jpg'); } 
+        else if (mainImage) { formData.append('photo', mainImage); }
         const res = await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, { method: 'POST', body: formData });
         const data = await res.json();
         if (!data.ok) {
-            console.warn('Rasm yuborilmadi, matn bilan:', data.description);
-            await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: chatId, text: caption, parse_mode: 'HTML', disable_web_page_preview: false })
-            });
+            await fetch(`https://api.telegram.org/bot${token}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: chatId, text: caption, parse_mode: 'HTML', disable_web_page_preview: false }) });
         }
     } catch (err) { console.error('Telegram xato:', err); }
 }
@@ -621,47 +452,53 @@ async function submitCustomerOrder(e) {
     const phone = document.getElementById('custPhone').value.trim();
     const address = document.getElementById('custAddress').value.trim();
     if (!name || !phone || !address || state.cart.length === 0) return;
+
     const orderId = '#RMZ-' + Math.floor(1000 + Math.random() * 9000);
-    const { subtotal, discount, total } = calcTotal();
-    const timestamp = new Date().toISOString();
-    state.cart.forEach(c => {
-        const prod = state.products.find(p => p.id === c.id);
-        if (prod) prod.stock = Math.max(0, prod.stock - c.qty);
-    });
-    state.orders.unshift({
-        id: orderId, date: 'Hozir', timestamp,
-        customer: name, phone, address,
-        items: state.cart.map(x => ({ name: x.name, size: x.size, qty: x.qty, code: x.code, image: x.image })),
-        total, status: 'Kutilmoqda',
-        promo: state.appliedPromo?.code || null, discount
-    });
-    await sendOrderToTelegram({ orderId, name, phone, address, total, discount, items: state.cart });
-    saveState();
-    renderCatalog();
-    updateAdminViews();
-    renderCharts();
-    state.cart = [];
-    state.appliedPromo = null;
-    updateCartUI();
-    closeCart();
-    document.getElementById('successOrderRef').innerText = orderId;
-    document.getElementById('orderSuccessModal').classList.add('show');
+    const { discount, total } = calcTotal();
+
+    try {
+        await DB.createOrder({
+            id: orderId, customer: name, phone: phone, address: address,
+            items: state.cart.map(x => ({ name: x.name, size: x.size, qty: x.qty, price: x.price, code: x.code })),
+            total: total, discount: discount, promo: state.appliedPromo?.code || null, status: 'Kutilmoqda'
+        });
+
+        for (const item of state.cart) { await DB.decrementStock(item.id, item.qty); }
+        await sendOrderToTelegram({ orderId, name, phone, address, total, discount, items: state.cart });
+        await reloadData();
+
+        state.cart = []; state.appliedPromo = null; updateCartUI(); closeCart();
+        document.getElementById('successOrderRef').innerText = orderId;
+        document.getElementById('orderSuccessModal').classList.add('show');
+    } catch (err) {
+        showToast("Buyurtma yuborishda xato: " + err.message, 'fa-circle-xmark');
+    }
 }
 
 function closeSuccessOverlay() { document.getElementById('orderSuccessModal').classList.remove('show'); }
 
 function openAdminLogin() { document.getElementById('adminLoginModal').classList.add('show'); document.getElementById('modalBackdrop').classList.add('show'); }
 function closeAdminLogin() { document.getElementById('adminLoginModal').classList.remove('show'); checkBackdrop(); }
-function handleAdminLogin(e) {
+
+async function handleAdminLogin(e) {
     e.preventDefault();
-    const u = document.getElementById('adminLoginUser').value.trim();
-    const p = document.getElementById('adminLoginPass').value.trim();
-    if (u === ADMIN_USERNAME && p === ADMIN_PASSWORD) {
+    const email = document.getElementById('adminLoginUser').value.trim();
+    const password = document.getElementById('adminLoginPass').value.trim();
+    try {
+        await DB.signIn(email, password);
+        state.isAdmin = await DB.isAdmin();
+        if (!state.isAdmin) {
+            showToast("Sizda admin huquqi yo'q!", 'fa-shield-halved');
+            await DB.signOut();
+            return;
+        }
         closeAdminLogin();
         document.getElementById('adminFullWebsite').classList.add('active');
-        updateAdminViews();
+        await reloadData();
         showToast("Admin Panelga xush kelibsiz!", 'fa-shield-halved');
-    } else showToast("Login yoki parol noto'g'ri", 'fa-circle-xmark');
+    } catch (err) {
+        showToast("Email yoki parol noto'g'ri", 'fa-circle-xmark');
+    }
 }
 
 function exitAdminWebsite() { document.getElementById('adminFullWebsite').classList.remove('active'); showToast("Do'konga qaytildi", 'fa-arrow-left'); }
@@ -685,17 +522,15 @@ function updateAdminViews() {
     document.getElementById('adminTotalRevenue').innerText = formatUZS(rev);
     document.getElementById('adminTotalOrdersCount').innerText = state.orders.length;
     document.getElementById('adminLowStockCount').innerText = state.products.filter(p => p.stock <= 4).length;
-    document.getElementById('adminRecentOrdersTable').innerHTML = state.orders.slice(0, 5).map(o => `
-        <tr><td style="font-weight:600; color:var(--gold-light);">${o.id}</td><td>${o.customer}</td><td>${o.phone}</td><td style="font-weight:600;">${formatUZS(o.total)}</td><td><span class="badge-status ${o.status === 'Yakunlandi' ? 'done' : (o.status === 'Yetkazilmoqda' ? 'delivering' : 'pending')}">${o.status}</span></td></tr>
-    `).join('');
+    document.getElementById('adminRecentOrdersTable').innerHTML = state.orders.slice(0, 5).map(o => `<tr><td style="font-weight:600; color:var(--gold-light);">${o.id}</td><td>${o.customer}</td><td>${o.phone}</td><td style="font-weight:600;">${formatUZS(o.total)}</td><td><span class="badge-status ${o.status === 'Yakunlandi' ? 'done' : (o.status === 'Yetkazilmoqda' ? 'delivering' : 'pending')}">${o.status}</span></td></tr>`).join('');
     document.getElementById('adminAllOrdersTable').innerHTML = state.orders.map((o, idx) => `
         <tr>
             <td style="font-weight:600; color:var(--gold-light);">${o.id}</td><td>${o.date}</td>
             <td><strong>${o.customer}</strong><br/><small style="color:var(--text-dim);">${o.address}</small></td>
             <td>${o.phone}</td><td>${o.items.map(i => `${i.name} x${i.qty}`).join('<br/>')}</td>
             <td style="font-weight:600;">${formatUZS(o.total)}${o.promo ? `<br/><small style="color:var(--emerald);">🎟 ${o.promo}</small>` : ''}</td>
-            <td><select onchange="updateOrderStatus(${idx}, this.value)" style="background:var(--surface-card); border:1px solid var(--line); color:var(--ivory); padding:4px 8px; border-radius:6px; font-size:11px;"><option value="Kutilmoqda" ${o.status === 'Kutilmoqda' ? 'selected' : ''}>Kutilmoqda</option><option value="Yetkazilmoqda" ${o.status === 'Yetkazilmoqda' ? 'selected' : ''}>Yetkazilmoqda</option><option value="Yakunlandi" ${o.status === 'Yakunlandi' ? 'selected' : ''}>Yakunlandi</option></select></td>
-            <td><button onclick="deleteOrder(${idx})" style="color:var(--rose);"><i class="fas fa-trash"></i></button></td>
+            <td><select onchange="updateOrderStatus('${o.dbId}', this.value)" style="background:var(--surface-card); border:1px solid var(--line); color:var(--ivory); padding:4px 8px; border-radius:6px; font-size:11px;"><option value="Kutilmoqda" ${o.status === 'Kutilmoqda' ? 'selected' : ''}>Kutilmoqda</option><option value="Yetkazilmoqda" ${o.status === 'Yetkazilmoqda' ? 'selected' : ''}>Yetkazilmoqda</option><option value="Yakunlandi" ${o.status === 'Yakunlandi' ? 'selected' : ''}>Yakunlandi</option></select></td>
+            <td><button onclick="deleteOrder('${o.dbId}')" style="color:var(--rose);"><i class="fas fa-trash"></i></button></td>
         </tr>`).join('');
     document.getElementById('adminProductsTable').innerHTML = state.products.map(p => {
         const isHero = p.code === state.hero.productCode;
@@ -722,8 +557,16 @@ function updateAdminViews() {
     renderCharts();
 }
 
-function updateOrderStatus(idx, s) { if (state.orders[idx]) { state.orders[idx].status = s; saveState(); updateAdminViews(); showToast(`Status: ${s}`); } }
-function deleteOrder(idx) { if (confirm("O'chirish?")) { state.orders.splice(idx, 1); saveState(); updateAdminViews(); showToast("O'chirildi"); } }
+async function updateOrderStatus(dbId, s) {
+    try { await DB.updateOrderStatus(dbId, s); await reloadData(); showToast(`Status: ${s}`); }
+    catch (err) { showToast("Xato: " + err.message, 'fa-circle-xmark'); }
+}
+
+async function deleteOrder(dbId) {
+    if (!confirm("O'chirish?")) return;
+    try { await DB.deleteOrder(dbId); await reloadData(); showToast("O'chirildi"); }
+    catch (err) { showToast("Xato: " + err.message, 'fa-circle-xmark'); }
+}
 
 function updatePreviewCodeForNew() {
     const id = document.getElementById('formProdId').value;
@@ -787,39 +630,22 @@ function renderImgPreviewGrid() {
 
 function removeTempImage(i) { state.tempImages.splice(i, 1); renderImgPreviewGrid(); }
 
-function compressImage(file, maxW = 800, quality = 0.75) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const img = new Image();
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                let w = img.width, h = img.height;
-                if (w > maxW) { h = Math.round((h * maxW) / w); w = maxW; }
-                canvas.width = w; canvas.height = h;
-                canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-                try { resolve(canvas.toDataURL('image/jpeg', quality)); } catch (err) { reject(err); }
-            };
-            img.onerror = reject;
-            img.src = e.target.result;
-        };
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-    });
-}
-
 async function handleMultiImageUpload(event) {
     const files = Array.from(event.target.files || []);
     if (files.length === 0) return;
-    showToast(`${files.length} rasm siqilmoqda...`, 'fa-spinner');
+    showToast(`${files.length} rasm yuklanmoqda...`, 'fa-spinner');
     let added = 0;
     for (const file of files) {
         if (!file.type.startsWith('image/')) continue;
         if (file.size > 5 * 1024 * 1024) { showToast(`${file.name} - 5MB dan katta`, 'fa-circle-xmark'); continue; }
-        try { const b64 = await compressImage(file); state.tempImages.push(b64); added++; } catch (err) { console.error(err); }
+        try {
+            const publicUrl = await DB.uploadImage(file);
+            state.tempImages.push(publicUrl);
+            added++;
+        } catch (err) { console.error(err); showToast(`Xato: ${file.name}`, 'fa-circle-xmark'); }
     }
     renderImgPreviewGrid();
-    showToast(`${added} rasm qo'shildi`, 'fa-check');
+    showToast(`${added} rasm yuklandi`, 'fa-check');
     event.target.value = '';
 }
 
@@ -837,7 +663,7 @@ function addImgUrl() {
     document.getElementById('formProdImgUrl').value = '';
 }
 
-function saveAdminProduct(e) {
+async function saveAdminProduct(e) {
     e.preventDefault();
     const id = document.getElementById('formProdId').value;
     const name = document.getElementById('formProdName').value.trim();
@@ -847,67 +673,71 @@ function saveAdminProduct(e) {
     const badge = document.getElementById('formProdBadge').value.trim();
     const sizes = document.getElementById('formProdSizes').value.split(',').map(s => s.trim()).filter(Boolean);
     const desc = document.getElementById('formProdDesc').value.trim();
+    
     if (state.tempImages.length === 0) { showToast("Kamida 1 ta rasm kerak", 'fa-triangle-exclamation'); return; }
-    if (id) {
-        const p = state.products.find(x => x.id === id);
-        if (p) {
-            p.name = name; p.category = cat; p.price = price; p.stock = stock;
-            p.badge = badge; p.sizes = sizes; p.description = desc;
-            p.images = [...state.tempImages];
-            p.image = p.images[0];
+
+    try {
+        if (id) {
+            await DB.updateProduct(id, { name, category: cat, price, stock, badge, sizes, description: desc, images: state.tempImages });
+            showToast(`"${name}" tahrirlandi`, 'fa-check');
+        } else {
+            const newCode = generateNextCode(cat);
+            await DB.createProduct({ code: newCode, name, category: cat, price, stock, badge, sizes, description: desc, images: state.tempImages });
+            showToast(`"${name}" qo'shildi — ${newCode}`, 'fa-plus');
         }
-        showToast(`"${name}" tahrirlandi`, 'fa-check');
-    } else {
-        const newCode = generateNextCode(cat);
-        state.products.unshift({
-            id:'rmz-' + Date.now(), code: newCode, name, category: cat,
-            price, stock, badge, sizes, description: desc,
-            images: [...state.tempImages], image: state.tempImages[0], featured: 5
-        });
-        showToast(`"${name}" qo'shildi — ${newCode}`, 'fa-plus');
+        await reloadData();
+        closeProductEditForm();
+    } catch (err) {
+        showToast("Xato: " + err.message, 'fa-circle-xmark');
     }
-    saveState(); renderCatalog(); renderHero(); updateAdminViews(); closeProductEditForm();
 }
 
-function deleteProductItem(id) {
+async function deleteProductItem(id) {
     const p = state.products.find(x => x.id === id);
     if (!p) return;
     if (!confirm(`"${p.name}" (${p.code}) o'chirilsinmi?`)) return;
-    const wasHero = state.hero.productCode === p.code;
-    state.products = state.products.filter(x => x.id !== id);
-    state.wishlist = state.wishlist.filter(wid => wid !== id);
-    if (wasHero) {
-        state.hero.productCode = state.products[0]?.code || null;
-        if (state.products[0]) showToast(`Hero "${state.products[0].name}" ga o'tdi`, 'fa-star');
+    
+    try {
+        await DB.deleteProduct(id);
+        if (state.hero.productCode === p.code) {
+            const remaining = state.products.filter(x => x.id !== id);
+            await DB.saveHero(remaining[0]?.code || null, state.hero.badge);
+        }
+        await reloadData();
+        showToast(`"${p.name}" o'chirildi`, 'fa-trash');
+    } catch (err) {
+        showToast("Xato: " + err.message, 'fa-circle-xmark');
     }
-    saveState(); renderCatalog(); renderHero(); updateWishlistUI(); updateAdminViews();
-    showToast(`"${p.name}" o'chirildi`, 'fa-trash');
 }
 
-function setAsHero(code) {
+async function setAsHero(code) {
     const p = getProductByCode(code);
     if (!p) return;
-    state.hero.productCode = code;
-    saveState(); renderHero(); updateAdminViews();
-    showToast(`"${p.name}" hero'ga qo'yildi!`, 'fa-star');
+    try {
+        await DB.saveHero(code, state.hero.badge || 'Haftaning sarasi');
+        state.hero.productCode = code;
+        renderHero(); updateAdminViews();
+        showToast(`"${p.name}" hero'ga qo'yildi!`, 'fa-star');
+    } catch (err) { showToast("Xato: " + err.message, 'fa-circle-xmark'); }
 }
 
-function saveAdminHeroShowcase(e) {
+async function saveAdminHeroShowcase(e) {
     e.preventDefault();
     const code = document.getElementById('adminHeroProductSelect').value;
     const badge = document.getElementById('adminHeroBadgeInput').value.trim() || 'Haftaning sarasi';
-    const product = getProductByCode(code);
-    if (!product) return;
-    state.hero = { productCode: code, badge };
-    saveState(); renderHero(); updateAdminViews();
-    showToast(`Hero saqlandi!`, 'fa-star');
+    try {
+        await DB.saveHero(code, badge);
+        state.hero = { productCode: code, badge };
+        renderHero(); updateAdminViews();
+        showToast(`Hero saqlandi!`, 'fa-star');
+    } catch (err) { showToast("Xato: " + err.message, 'fa-circle-xmark'); }
 }
 
 function saveBotSettings(e) {
     e.preventDefault();
     state.botToken = document.getElementById('botTokenInput').value.trim();
     state.botChatId = document.getElementById('botChatIdInput').value.trim();
-    saveState(); showToast("Bot sozlamalari saqlandi!");
+    saveLocalState(); showToast("Bot sozlamalari saqlandi!");
 }
 
 async function sendTestTelegramMessage() {
@@ -925,13 +755,11 @@ function renderCharts() {
     const now = new Date();
     let weekTotal = 0;
     for (let i = 6; i >= 0; i--) {
-        const d = new Date(now);
-        d.setDate(d.getDate() - i);
+        const d = new Date(now); d.setDate(d.getDate() - i);
         const dayKey = d.toISOString().slice(0, 10);
         const label = d.toLocaleDateString('uz-UZ', { day: 'numeric', month: 'short' });
         days.push(label);
         let dayTotal = state.orders.filter(o => o.timestamp && o.timestamp.startsWith(dayKey)).reduce((sum, o) => sum + (o.total || 0), 0);
-        if (i === 0) dayTotal += state.orders.filter(o => !o.timestamp).reduce((sum, o) => sum + (o.total || 0), 0);
         dayRevenue.push(dayTotal);
         weekTotal += dayTotal;
     }
@@ -968,34 +796,76 @@ function renderCharts() {
 }
 
 function checkBackdrop() {
-    if (!document.getElementById('productModal').classList.contains('show') &&
-        !document.getElementById('cartDrawer').classList.contains('open') &&
-        !document.getElementById('wishlistDrawer').classList.contains('open') &&
-        !document.getElementById('adminLoginModal').classList.contains('show')) {
+    if (!document.getElementById('productModal').classList.contains('show') && !document.getElementById('cartDrawer').classList.contains('open') && !document.getElementById('wishlistDrawer').classList.contains('open') && !document.getElementById('adminLoginModal').classList.contains('show')) {
         document.getElementById('modalBackdrop').classList.remove('show');
     }
 }
 
 function closeAllModals() { closeProductModal(); closeCart(); closeWishlist(); closeAdminLogin(); }
 
-document.getElementById('searchInput').addEventListener('input', e => { state.search = e.target.value; renderCatalog(); });
+/* =========================================================
+   INIT & SUPABASE DATA LOADING (Mantiqiy xatolik tuzatildi)
+   ========================================================= */
+async function reloadData() {
+    try {
+        // 1. Mahsulotlar va Hero ni yuklash (Buni hamma ko'radi)
+        const [products, hero] = await Promise.all([ DB.loadProducts(), DB.loadHero() ]);
+        state.products = products;
+        state.hero = hero;
+        
+        renderHero(); 
+        renderCatalog(); 
+        populateHeroProductSelect();
 
-/* ==================== INIT ==================== */
-initMigrations();
-document.getElementById('botTokenInput').value = state.botToken;
-document.getElementById('botChatIdInput').value = state.botChatId;
-applyLanguage(state.lang);
-renderHero();
-renderCatalog();
-updateCartUI();
-updateWishlistUI();
-updateAdminViews();
-renderCharts();
-
-// 🔗 URL'dan mahsulotni ochish
-const urlParams = new URLSearchParams(window.location.search);
-const sharedCode = urlParams.get('product');
-if (sharedCode) {
-    const p = getProductByCode(sharedCode);
-    if (p) setTimeout(() => openProductModal(p.id), 600);
+        // 2. Buyurtmalarni faqat Admin yuklaydi (Mehmonlarga xato bermasligi uchun)
+        if (state.isAdmin) {
+            try {
+                const orders = await DB.loadOrders();
+                state.orders = orders;
+                updateAdminViews();
+                renderCharts();
+            } catch (e) {
+                console.warn("Buyurtmalar yuklanmadi:", e);
+            }
+        }
+    } catch (err) {
+        console.error('reloadData xatosi:', err);
+        showToast("Ma'lumot yuklanmadi! Supabase bilan aloqa yo'q.", 'fa-circle-xmark');
+    }
 }
+
+async function init() {
+    document.getElementById('botTokenInput').value = state.botToken;
+    document.getElementById('botChatIdInput').value = state.botChatId;
+    applyLanguage(state.lang);
+    updateCartUI();
+    updateWishlistUI();
+    
+    // Sahifa ochilganda ma'lumotlarni yuklash
+    await reloadData();
+
+    // URL'dan mahsulotni ochish
+    const urlParams = new URLSearchParams(window.location.search);
+    const sharedCode = urlParams.get('product');
+    if (sharedCode) {
+        const p = getProductByCode(sharedCode);
+        if (p) setTimeout(() => openProductModal(p.id), 600);
+    }
+
+    // Real-time yangi buyurtmalar (faqat admin uchun)
+    DB.onNewOrder(() => {
+        if (state.isAdmin) {
+            reloadData();
+            showToast("🔔 Yangi buyurtma keldi!", 'fa-bell');
+        }
+    });
+
+    // Qidiruv input
+    document.getElementById('searchInput').addEventListener('input', e => {
+        state.search = e.target.value;
+        renderCatalog();
+    });
+}
+
+// Hammasini ishga tushirish
+init();
