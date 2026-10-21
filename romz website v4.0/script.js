@@ -804,7 +804,7 @@ function checkBackdrop() {
 function closeAllModals() { closeProductModal(); closeCart(); closeWishlist(); closeAdminLogin(); }
 
 /* =========================================================
-   INIT & SUPABASE DATA LOADING (Mantiqiy xatolik tuzatildi)
+   INIT & SUPABASE DATA LOADING
    ========================================================= */
 async function reloadData() {
     try {
@@ -817,7 +817,7 @@ async function reloadData() {
         renderCatalog(); 
         populateHeroProductSelect();
 
-        // 2. Buyurtmalarni faqat Admin yuklaydi (Mehmonlarga xato bermasligi uchun)
+        // 2. Buyurtmalarni faqat Admin yuklaydi
         if (state.isAdmin) {
             try {
                 const orders = await DB.loadOrders();
@@ -835,13 +835,18 @@ async function reloadData() {
 }
 
 async function init() {
-    document.getElementById('botTokenInput').value = state.botToken;
-    document.getElementById('botChatIdInput').value = state.botChatId;
+    // Elementlar mavjudligini tekshirib, null bo'lsa xato bermasligi uchun himoya qilamiz
+    const botTokenEl = document.getElementById('botTokenInput');
+    if (botTokenEl) botTokenEl.value = state.botToken;
+    
+    const botChatIdEl = document.getElementById('botChatIdInput');
+    if (botChatIdEl) botChatIdEl.value = state.botChatId;
+
     applyLanguage(state.lang);
     updateCartUI();
     updateWishlistUI();
     
-    // Sahifa ochilganda ma'lumotlarni yuklash
+    // Sahifa ochilganda ma'lumotlarni yuklash (Eng muhim qismi)
     await reloadData();
 
     // URL'dan mahsulotni ochish
@@ -852,7 +857,7 @@ async function init() {
         if (p) setTimeout(() => openProductModal(p.id), 600);
     }
 
-    // Real-time yangi buyurtmalar (faqat admin uchun)
+    // Real-time yangi buyurtmalar
     DB.onNewOrder(() => {
         if (state.isAdmin) {
             reloadData();
@@ -861,10 +866,13 @@ async function init() {
     });
 
     // Qidiruv input
-    document.getElementById('searchInput').addEventListener('input', e => {
-        state.search = e.target.value;
-        renderCatalog();
-    });
+    const searchEl = document.getElementById('searchInput');
+    if (searchEl) {
+        searchEl.addEventListener('input', e => {
+            state.search = e.target.value;
+            renderCatalog();
+        });
+    }
 }
 
 // Hammasini ishga tushirish
